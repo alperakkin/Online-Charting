@@ -1,0 +1,197 @@
+
+<pareto_panel>:
+    pos:self.pos
+    size_hint:self.size_hint
+    spacing:10
+    BoxLayout:
+        id:b2
+        cols:2
+
+        spacing:5
+
+
+
+
+
+
+
+
+
+
+<Sliding_Menu>:
+    pos:self.pos
+    size_hint:self.size_hint
+    GridLayout:
+        spacing:5
+        cols:1
+        size_hint_y:None
+        size:self.size
+        minimum_height:20
+        do_scroll_x:True
+        scroll_distance:200
+
+
+
+<MainMenu>:
+
+    Background:
+        id:back
+        pos:self.pos
+        size_hint:self.size_hint
+        allow_stretch:self.allow_stretch
+        keep_ratio:self.keep_ratio
+
+
+    ImageButton:
+        id:exit_button
+        pos:self.pos
+        size_hint:self.size_hint
+        allow_stretch:True
+        keep_ratio:False
+        source: "picture_lib/exit.png"
+        on_press: root.close_app()
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: self.angle
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+
+    ImageButton:
+        id:configure_button
+        pos:self.pos
+        size_hint:self.size_hint
+        allow_stretch:True
+        keep_ratio:False
+        source: "picture_lib/configure.png"
+        on_press: root.anim_configure()
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: self.angle
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+
+
+    pareto_panel:
+        id:prt
+        pos:self.pos
+        size_hint:self.size_hint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<OpenDialog>:
+    title:self.title
+    size_hint:0.25,0.30
+    auto_dismiss:False
+    text:input.text
+    text2:input2.text
+    lb_error:er
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding:10
+        pos: self.pos
+        size:root.size
+
+        BoxLayout:
+
+            orientation:'horizontal'
+            padding:0,-20,0,5
+
+            Label:
+                id:t1
+                size_hint_y:0.45
+            TextInput:
+                id:input
+                multiline: False
+                write_tab:False
+                size_hint_y:0.45
+                padding_y:3,1
+                on_text: root.error=''
+        BoxLayout:
+            orientation:'horizontal'
+            padding:0,-20,0,5
+
+
+            Label:
+                id:t2
+                size_hint_y:0.45
+            TextInput:
+
+                id:input2
+                multiline: False
+                write_tab:False
+                password:True
+                size_hint_y:0.45
+                padding_y:3,1
+                on_text: root.error=''
+
+        BoxLayout:
+            orientation: 'horizontal'
+            padding:0,5,0,-30
+            Button:
+                text:'Giris'
+                on_press:root.enter()
+            Button:
+                text: 'Iptal'
+                on_press: root.cancel()
+
+        FloatLayout:
+            Label:
+                id:er
+                foreground_color:1,250,100,1
+                color: 1,0.67,0,1
+                size_hint_y:None
+                pos:570,470
+                height:0
+                text:root.error
+
+
+
+
+<Configuration_Window>:
+
+    Background:
+        id:back
+        pos:self.pos
+        size_hint:self.size_hint
+        allow_stretch:self.allow_stretch
+        keep_ratio:self.keep_ratio
+
+
+    ImageButton:
+        id:exit_button
+        pos:self.pos
+        size_hint:self.size_hint
+        allow_stretch:True
+        keep_ratio:False
+        source: "picture_lib/exit.png"
+        on_release:root.close_app()
+        canvas.before:
+            PushMatrix
+            Rotate:
+                angle: self.angle
+                origin: self.center
+        canvas.after:
+            PopMatrix
+
+
+
+
